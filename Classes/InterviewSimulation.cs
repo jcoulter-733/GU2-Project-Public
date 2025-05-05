@@ -42,7 +42,7 @@ namespace GU2.Classes
             answeredQuestions = 0;
 
         }
-
+        
         /// <summary>
         /// Asks the next question in the simulation.
         /// </summary>
