@@ -1,8 +1,8 @@
-﻿/// John Coulter
-/// Graded Unit 2 Project
-/// Job Interviewing and Tracking Application
-/// 04/05/2025
-/// QuestionView.cs
+﻿// Name: John Coulter
+//Class: HND Software Development: Graded Unit 2
+//Project description: Job Interviewing and Tracking Application
+//Date: 04/05/2025
+// QuestionView.cs
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +30,7 @@ namespace GU2.Forms
         string selectedQuestionBehaviour = "";
         string selectedQuestionAnswered = "";
         DateTime selectedAddedAt = DateTime.Now;
+        
 
         public QuestionView()
         {
@@ -85,6 +86,7 @@ namespace GU2.Forms
         /// <param name="filtered"></param>
         private void LoadData(bool filtered)
         {
+
             // Load the list of questions
             Question.CreateQuestionList(Program.userId);
 
@@ -124,7 +126,8 @@ namespace GU2.Forms
             // Hide the userId and questionId columns
             foreach (var col in new[] { "userId", "questionId" })
                 if (DataGridViewer.Columns.Contains(col))
-                    DataGridViewer.Columns[col].Visible = false;
+                    DataGridViewer.Columns[col].Visible = false;           
+            
 
             // Update the form title with the number of questions
             this.Text = $"Showing List of Questions [{DataGridViewer.RowCount} Questions]";
@@ -132,12 +135,12 @@ namespace GU2.Forms
             // If the filtered list is empty, show a message
             if (filtered && DataGridViewer.RowCount == 0)
             {
-                lblSelectedQuestion.Text =
-                    "No questions found that matched your selected filters";
+                lblQuestionText.Text = "No questions found that matched your selected filters";
+                lblSelectedQuestion.Text = "No question selected";
             }
             else
             {
-                PopulateInfoLabel();
+                
             }
         }
 
@@ -148,6 +151,7 @@ namespace GU2.Forms
         /// <param name="e"></param>
         private void DataGridViewer_SelectionChanged(object sender, EventArgs e)
         {
+
             // Check if the DataGridView has any selected rows
             if (DataGridViewer.CurrentRow == null || DataGridViewer.CurrentRow.Index < 0)
                 return;
@@ -174,12 +178,13 @@ namespace GU2.Forms
         /// </summary>
         private void PopulateInfoLabel()
         {
+
             // If the AnswerRecord list contains the selected questionId, then the question has been answered
             if (Program.AnswerRecords.Contains(selectedQuestionId))
             {
                 selectedQuestionAnswered = "Yes";
                 string answerText = Answer.GetAnswer(selectedQuestionId); // Gets the answer text for selected question
-                lblAnswerPreview.Text = answerText; 
+                lblAnswerPreview.Text = answerText;
                 lblAnswerPreview.Visible = true;
                 btnAnswer.Text = "Edit Answer";
             }
@@ -209,13 +214,15 @@ namespace GU2.Forms
 
             // Display the selected question details in the label
             lblQuestionText.Text = selectedQuestion;
-            lblSelectedQuestion.Text =                
+            lblSelectedQuestion.Text =
                 $"Type: {selectedQuestionType}\n" +
                 $"Behaviour: {selectedQuestionBehaviour}\n" +
                 $"Answered: {selectedQuestionAnswered}\n" +
                 $"Added By: {selectedUsername}\n" +
                 $"Added At: {selectedAddedAt.ToString("yyyy-MM-dd HH:mm")}";
         }
+
+            
 
         /// <summary>
         /// Event handler for the Add Question button click event. This method opens the NewQuestion form to add a new question.
@@ -355,6 +362,7 @@ namespace GU2.Forms
         /// <param name="e"></param>
         private void btnAnswer_Click(object sender, EventArgs e)
         {
+            
             // Check if an answer already exists for the selected question
             if (Program.AnswerRecords.Contains(selectedQuestionId))
             {
@@ -401,7 +409,8 @@ namespace GU2.Forms
         /// <param name="e"></param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if(selectedUserId != 0)// Check that this question is not a system question
+            
+            if (selectedUserId != 0)// Check that this question is not a system question
             {
                 NewQuestion editQuestion = new NewQuestion(selectedQuestionId, selectedQuestion, selectedQuestionType, selectedQuestionBehaviour);
                 editQuestion.Show();

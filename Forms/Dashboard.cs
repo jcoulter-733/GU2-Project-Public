@@ -1,8 +1,8 @@
-﻿/// John Coulter
-/// Graded Unit 2 Project
-/// Job Interviewing and Tracking Application
-/// 04/05/2025
-/// Dashboard.cs
+﻿// Name: John Coulter
+//Class: HND Software Development: Graded Unit 2
+//Project description: Job Interviewing and Tracking Application
+//Date: 04/05/2025
+// Dashboard.cs
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

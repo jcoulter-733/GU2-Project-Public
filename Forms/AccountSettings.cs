@@ -1,8 +1,8 @@
-﻿/// John Coulter
-/// Graded Unit 2 Project
-/// Job Interviewing and Tracking Application
-/// 04/05/2025
-/// AccountSettings.cs
+﻿// Name: John Coulter
+//Class: HND Software Development: Graded Unit 2
+//Project description: Job Interviewing and Tracking Application
+//Date: 04/05/2025
+// AccountSettings.cs
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -150,6 +150,7 @@ namespace GU2.Forms
                 MessageBox.Show("Error: Both fields are required.","Error",MessageBoxButtons.OK,MessageBoxIcon.Warning);
                 return;
             }
+
             else
             {
                 // Try to change the password

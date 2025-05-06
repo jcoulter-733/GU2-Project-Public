@@ -1,8 +1,8 @@
-﻿/// John Coulter
-/// Graded Unit 2 Project
-/// Job Interviewing and Tracking Application
-/// 04/05/2025
-/// User.cs
+﻿// Name: John Coulter
+//Class: HND Software Development: Graded Unit 2
+//Project description: Job Interviewing and Tracking Application
+//Date: 04/05/2025
+//User.cs
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -277,12 +277,13 @@ namespace GU2.Classes
                             // Password updated successfully.
                             MessageBox.Show("Password updated successfully.");
                         }
-                        else
-                        {
-                            // An error occurred while updating the password.
-                            MessageBox.Show("Error: Unable to update password");
-                        }
+                        
 
+                    }
+                    else
+                    {
+                        // An error occurred while updating the password.
+                        MessageBox.Show("Error: Unable to update password");
                     }
                 }
                 catch (Exception ex)
@@ -304,7 +305,7 @@ namespace GU2.Classes
         /// <param name="saltSize"></param>
         /// <param name="iterations"></param>
         /// <returns></returns>
-        public static (string Hash, string Salt) CreatePasswordHash(string password, int saltSize = 16, int iterations = 10000)
+        public static (string Hash, string Salt) CreatePasswordHash(string password, int saltSize = 16, int iterations = 100000)
         {
             byte[] saltBytes = new byte[saltSize];
             using (var rng = RandomNumberGenerator.Create())
@@ -330,7 +331,7 @@ namespace GU2.Classes
         /// <param name="storedSalt"></param>
         /// <param name="iterations"></param>
         /// <returns></returns>
-        public static bool VerifyPassword(string password, string storedHash, string storedSalt, int iterations = 10000)
+        public static bool VerifyPassword(string password, string storedHash, string storedSalt, int iterations = 100000)
         {
             // Convert the stored salt back to bytes.
             byte[] saltBytes = Convert.FromBase64String(storedSalt);
